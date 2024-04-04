@@ -81,7 +81,7 @@ public class LoginScreen extends JFrame {
 		 passwordLabel.setForeground(new Color(255, 255, 255));
 		 passwordLabel.setFont(new Font("Cafe24 Ssurround Bold", Font.PLAIN, 22));
 		 passwordLabel.setBounds(75, 378, 90, 36);
-		 panel.add( passwordLabel);
+		 panel.add(passwordLabel);
 		
 		idField = new JTextField();
 		idField.setBounds(177, 338, 200, 30);
