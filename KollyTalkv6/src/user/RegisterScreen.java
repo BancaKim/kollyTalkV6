@@ -39,6 +39,7 @@ public class RegisterScreen extends JFrame {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setTitle("KollyTalk");
 		frame.setSize(500,700);
 		frame.setBounds(100, 100, 510, 729);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -52,7 +53,7 @@ public class RegisterScreen extends JFrame {
 
 		JLabel mainLogo = new JLabel(
 				new ImageIcon("C:/Users/BIT/git/KollyTalkv5/kollytalkv5/images/collytalk_logo.jpg"));
-		mainLogo.setBounds(12, 10, 476, 133);
+		mainLogo.setBounds(12, 10, 476, 165);
 		panel.add(mainLogo);
 
 		JLabel idLabel = new JLabel("ID :");
@@ -109,6 +110,7 @@ public class RegisterScreen extends JFrame {
 		updBtn.setIcon(new ImageIcon("C:\\Users\\BIT\\OneDrive\\바탕 화면\\프로젝트\\회원가입\\upload_un.jpg"));
 		updBtn.setPressedIcon(new ImageIcon("C:\\Users\\BIT\\OneDrive\\바탕 화면\\프로젝트\\회원가입\\upload_click.jpg"));
 		updBtn.setBounds(191, 470, 188, 40);
+		updBtn.setBorderPainted(false);
 		panel.add(updBtn);
 
 		JButton signInBtn = new JButton("");
@@ -116,6 +118,7 @@ public class RegisterScreen extends JFrame {
 		signInBtn.setIcon(new ImageIcon("C:\\Users\\BIT\\OneDrive\\바탕 화면\\프로젝트\\회원가입\\signin_fin_un.jpg"));
 		signInBtn.setPressedIcon(new ImageIcon("C:\\Users\\BIT\\OneDrive\\바탕 화면\\프로젝트\\회원가입\\signin_fin_click.jpg"));
 		signInBtn.setBounds(179, 520, 200, 62);
+		signInBtn.setBorderPainted(false);
 
 		signInBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -153,6 +156,7 @@ public class RegisterScreen extends JFrame {
 					ex.printStackTrace();
 					JOptionPane.showMessageDialog(null, "데이터베이스 오류: " + ex.getMessage());
 				}
+				frame.setVisible(false);
 			}
 		});
 		panel.add(signInBtn);

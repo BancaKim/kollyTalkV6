@@ -29,7 +29,6 @@ public class ChatServer {
 	}
 
 	private static class Handler extends Thread {
-		private String name;
 		private Socket socket;
 		private PrintWriter out;
 		private BufferedReader in;
@@ -46,64 +45,64 @@ public class ChatServer {
 				out = new PrintWriter(socket.getOutputStream(), true);
 
 				userName = in.readLine();
-				if(clients.size()==0) {
+				if (clients.size() == 0) {
 					chatRder = userName;
 				}
 				clients.put(userName, out);
 				broadcast("Server: " + userName + "님이 접속하셨습니다.");
-				broadcast("공지사항: "+ getNotice());
+				broadcast("공지사항: " + getNotice());
 
 				String message;
 				while ((message = in.readLine()) != null) {
 					System.out.println("수신: " + message);
-					if(message.startsWith("whisper")) {
+					if (message.startsWith("whisper")) {
 						int firstIdx = message.indexOf(":");
 						int secondIdx = message.indexOf("->");
-						int thirdIdx = message.indexOf(" ", secondIdx+3);
-						String sendUserNm = message.substring(firstIdx+1, secondIdx-1);
-						String recvUserNm = message.substring(secondIdx+3, thirdIdx);
-						String onlyMsg = message.substring(thirdIdx+1);
+						int thirdIdx = message.indexOf(" ", secondIdx + 3);
+						String sendUserNm = message.substring(firstIdx + 1, secondIdx - 1);
+						String recvUserNm = message.substring(secondIdx + 3, thirdIdx);
+						String onlyMsg = message.substring(thirdIdx + 1);
 						PrintWriter sPw = clients.get(sendUserNm);
 						PrintWriter rPw = clients.get(recvUserNm);
-						if(sPw != null) {
-							sPw.println(onlyMsg);
+						if (sPw != null) {
+							sPw.println("                                                       귓속말 to " + recvUserNm
+									+ onlyMsg); 
 						}
-						if(rPw != null) {
-							rPw.println(onlyMsg);							
+						if (rPw != null) {
+							rPw.println("귓속말 from " + sendUserNm + onlyMsg);
 						}
-					}else if (message.startsWith("newUser:")) {
+					} else if (message.startsWith("newUser:")) {
 						updateUser();
-					}else if (message.startsWith("kickout")) {
+					} else if (message.startsWith("kickout")) {
 						int firstIdx = message.indexOf(":");
-						String user = message.substring(firstIdx+1);
+						String user = message.substring(firstIdx + 1);
 						String[] users = user.split(" -> ");
-						if(users[0].equals(chatRder)== false) {
+						if (users[0].equals(chatRder) == false) {
 							System.out.printf("%s는 방장이 아닙니다. 강퇴 기능을 실행할수 없습니다.%n", users[0]);
 						} else {
 							PrintWriter pw = clients.get(users[1]);
-							if(pw != null) {
+							if (pw != null) {
 								koutUser = users[1];
 								String msg = String.format("[kickout] %s 님은 강퇴되었습니다.", users[1]);
 								pw.println(msg);
 								throw new IOException(msg);
 							}
 						}
-						
-					}
-					else {
+
+					} else {
 						broadcast(message);
 					}
 				}
 			} catch (IOException e) {
 				System.out.println("클라이언트와의 연결이 끊어졌습니다.");
 			} finally {
-				if(koutUser != null) {
+				if (koutUser != null) {
 					System.out.println(koutUser + "님이 나가셨습니다.");
 					broadcast("Server : " + koutUser + " 님이 나가셨습니다.");
 					clients.remove(koutUser);
 					updateUser();
 					koutUser = null;
-				}else {
+				} else {
 					System.out.println(userName + "님이 나가셨습니다.");
 					broadcast("Server : " + userName + " 님이 나가셨습니다.");
 					clients.remove(userName);
@@ -151,22 +150,12 @@ public class ChatServer {
 			}
 		}
 
-		private PrintWriter getClientForUserId(String userId) {
-			for (PrintWriter client : clients.values()) {
-				String clientMessage = client.toString();
-				if (clientMessage.contains(userId)) {
-					return client;
-				}
-			}
-			return null;
-		}
-		
 		private void updateUser() {
 			String totalUser = "";
-			for(String user : clients.keySet()) {
+			for (String user : clients.keySet()) {
 				totalUser += user + ",";
 			}
-			broadcast("newUser:"+totalUser.substring(0, totalUser.length()-1));
+			broadcast("newUser:" + totalUser.substring(0, totalUser.length() - 1));
 		}
 	}
 }

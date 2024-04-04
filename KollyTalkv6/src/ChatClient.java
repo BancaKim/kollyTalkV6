@@ -293,8 +293,8 @@ public class ChatClient extends JFrame {
 			checkKickOutWord(message); 
 
 			if (message.startsWith("/w ")) { // 귓속말 명령어 확인
-				String[] parts = message.split(" "); // "/w", "대상 사용자 ID", "메시지"로 분리
-				if (parts.length > 2) {
+				String[] parts = message.split(" ",3); // "/w", "대상 사용자 ID", "메시지"로 분리
+				if (parts.length == 3) {
 					String targetUserId = parts[1];
 					String whisperMessage = parts[2];
 					String formattedMessage = userId + " -> " + targetUserId + " [" + getCurrentTimestamp() + "] : "
@@ -314,7 +314,6 @@ public class ChatClient extends JFrame {
 				}
 			} else { // 일반 메시지
 				String formattedMessage = userId + " [" + getCurrentTimestamp() + "] : " + message;
-//				dlm.add(chatCnt++, formattedMessage);
 				out.println(formattedMessage);
 			}
 			saveMessageToDatabase(userId, message, getCurrentTimestamp());
@@ -376,7 +375,7 @@ public class ChatClient extends JFrame {
 	private void appendToChatArea(String message) {
 	    // 사용자가 보낸 메시지인지 여부를 판단하여 사용자 ID를 추가하여 표시
 	    if (message.startsWith(userId)) {
-	        dlm.add(chatCnt++, "                                                            "+message + "\n");
+	        dlm.add(chatCnt++, "                                                       "+message + "\n");
 	    } else {
 	        dlm.add(chatCnt++,message + "\n");
 	    }

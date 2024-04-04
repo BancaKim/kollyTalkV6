@@ -1,9 +1,4 @@
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -12,75 +7,77 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 
 import user.EditProfileScreen;
 
 public class UserMenuScreen extends JFrame {
-    private JButton enterChatRoomButton, editProfileButton;
-    private String userId;
-    private JLabel lblImage;
-    
-    public UserMenuScreen(String userId) {
-        this.userId = userId;
-        setTitle("사용자 메뉴");
-        setSize(500, 700);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        lblImage = new JLabel(new ImageIcon("images/kollytalk.jpg"));
-        lblImage.setHorizontalAlignment(JLabel.CENTER); // 레이블의 이미지를 가운데 정렬
+	private String userId;
+	private JFrame frame;
 
-        // 레이아웃 설정
-        setLayout(new BorderLayout());
-        add(lblImage, BorderLayout.NORTH); // 이미지 레이블을 상단에 추가
+	/**
+	 * Create the application.
+	 */
+	public UserMenuScreen(String userId) {
+		this.userId = userId;
+		initialize();
+	}
 
-        JPanel panel = new JPanel(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(5, 5, 5, 5);
-        gbc.fill = GridBagConstraints.HORIZONTAL;
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 500, 700);
+		frame.setTitle("KollyTalk");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
 
-        enterChatRoomButton = new JButton("채팅방 입장");
-        enterChatRoomButton.setPreferredSize(new Dimension(50, 80)); // 채팅방 입장 버튼 크기 조정
-        enterChatRoomButton.setFont(new Font("@나눔스퀘어라운드", Font.BOLD, 20)); // 글꼴 크기 조정
-        enterChatRoomButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                // 채팅방 입장 버튼 눌렀을 때의 동작
-                ChatClient chatClient = new ChatClient(userId);
-                chatClient.setVisible(true); // ChatClient 객체 표시
-            }
-        });
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.gridwidth = 1;
-        gbc.weightx = 1.0;
-        panel.add(enterChatRoomButton, gbc);
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(34, 77, 96));
+		panel.setBounds(0, 0, 484, 661);
+		frame.getContentPane().add(panel);
+		panel.setLayout(null);
 
-        editProfileButton = new JButton("내 정보 변경");
-        editProfileButton.setPreferredSize(new Dimension(50, 80)); // 내 정보 변경 버튼 크기 조정
-        editProfileButton.setFont(new Font("@나눔스퀘어라운드", Font.BOLD, 20)); // 글꼴 크기 조정
-        editProfileButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                // 내 정보 변경 버튼 눌렀을 때의 동작
-                EditProfileScreen editProfileScreen = new EditProfileScreen(userId);
-                editProfileScreen.setVisible(true);
-                // 여기에 내 정보 변경 화면으로 이동하는 코드를 작성하세요
-            }
-        });
-        gbc.gridx = 0;
-        gbc.gridy = 1;
-        gbc.gridwidth = 1;
-        gbc.weightx = 1.0;
-        panel.add(editProfileButton, gbc);
+		JLabel mainLogo = new JLabel(
+				new ImageIcon("C:\\Users\\BIT\\git\\kollyTalkV6\\KollyTalkv6\\images\\collytalk_logo.jpg"));
+		mainLogo.setBounds(0, 20, 472, 159);
+		panel.add(mainLogo);
 
-        add(panel);
-        setVisible(true);
-    }
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(34, 77, 96));
+		panel_1.setBounds(0, 466, 484, 95);
+		panel.add(panel_1);
+		panel_1.setLayout(null);
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                new UserMenuScreen("");
-            }
-        });
-    }
+		JButton infoBtn = new JButton("");
+		infoBtn.setIcon(new ImageIcon("C:\\images\\infochange_un.jpg"));
+		infoBtn.setPressedIcon(new ImageIcon("C:\\images\\infochange_click.jpg"));
+		infoBtn.setBounds(259, 10, 213, 69);
+		infoBtn.setBorderPainted(false);
+		infoBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// 내 정보 변경 버튼 눌렀을 때의 동작
+				new EditProfileScreen(userId);
+
+				// 여기에 내 정보 변경 화면으로 이동하는 코드를 작성하세요
+			}
+		});
+		panel_1.add(infoBtn);
+
+		JButton chatBtn = new JButton("");
+		chatBtn.setIcon(new ImageIcon("C:\\Users\\BIT\\OneDrive\\바탕 화면\\프로젝트\\회원가입\\chatenter_un.jpg"));
+		chatBtn.setPressedIcon(new ImageIcon("C:\\images\\chatenter_cilck.jpg"));
+		chatBtn.setBackground(new Color(34, 77, 96));
+		chatBtn.setBorderPainted(false);
+		chatBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// 채팅방 입장 버튼 눌렀을 때의 동작
+				ChatClient chatClient = new ChatClient(userId);
+				chatClient.setVisible(true); // ChatClient 객체 표시
+			}
+		});
+		chatBtn.setBounds(12, 10, 213, 69);
+		panel_1.add(chatBtn);
+		frame.setVisible(true);
+	}
 }

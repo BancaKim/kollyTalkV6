@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -21,10 +22,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import admin.AdminLoginScreen;
+import admin.AdminLoginScreen2;
 import user.RegisterScreen;
-
-import javax.swing.JButton;
 
 public class LoginScreen extends JFrame {
 
@@ -60,6 +59,7 @@ public class LoginScreen extends JFrame {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setTitle("KollyTalk");
 		ImagePanel welcomePanel = new ImagePanel(new ImageIcon("C:/Users/BIT/git/KollyTalkv5/kollytalkv5/images/background2.jpg").getImage());
 		frame.setSize(welcomePanel.getWidth(),welcomePanel.getHeight());
 		frame.getContentPane().add(welcomePanel, BorderLayout.WEST);
@@ -94,18 +94,21 @@ public class LoginScreen extends JFrame {
 		JButton signinBtn = new JButton(new ImageIcon("C:/Users/BIT/git/KollyTalkv5/kollytalkv5/images/signin64.png"));
 		signinBtn.setBackground(new Color(34, 77, 96));
 		signinBtn.setBounds(117, 522, 111, 97);
+		signinBtn.setBorderPainted(false);
 		welcomePanel.add(signinBtn);
 		frame.setLocationRelativeTo(welcomePanel);
 		
 		JButton adminBtn = new JButton(new ImageIcon("C:/Users/BIT/git/KollyTalkv5/kollytalkv5/images/admin64.png"));
 		adminBtn.setBackground(new Color(34, 77, 96));
 		adminBtn.setBounds(261, 525, 98, 94);
+		adminBtn.setBorderPainted(false);
 		welcomePanel.add(adminBtn);
 		
 		JButton loginBtn = new JButton("");
 		loginBtn.setIcon(new ImageIcon("C:\\Users\\BIT\\OneDrive\\바탕 화면\\프로젝트\\회원가입\\login_un.jpg"));
 		loginBtn.setPressedIcon(new ImageIcon("C:\\Users\\BIT\\OneDrive\\바탕 화면\\프로젝트\\회원가입\\login_click.jpg"));
-		loginBtn.setBounds(100, 424, 265, 57);
+		loginBtn.setBounds(105, 424, 265, 57);
+		loginBtn.setBorderPainted(false);
 		welcomePanel.add(loginBtn);
 		
 		JLabel siginInLabel = new JLabel("회원가입");
@@ -173,7 +176,7 @@ public class LoginScreen extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// 관리자 로그인 버튼 눌렀을 때의 동작
-				new AdminLoginScreen();
+				new AdminLoginScreen2();
 				// 여기에 관리자 로그인 처리 코드를 작성하세요
 			}
 		});
