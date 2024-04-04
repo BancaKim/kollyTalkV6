@@ -107,16 +107,16 @@ public class RegisterScreen extends JFrame {
 
 		JButton updBtn = new JButton("");
 		updBtn.setBackground(new Color(34, 77, 96));
-		updBtn.setIcon(new ImageIcon("C:\\Users\\BIT\\OneDrive\\바탕 화면\\프로젝트\\회원가입\\upload_un.jpg"));
-		updBtn.setPressedIcon(new ImageIcon("C:\\Users\\BIT\\OneDrive\\바탕 화면\\프로젝트\\회원가입\\upload_click.jpg"));
+		updBtn.setIcon(new ImageIcon("C:\\images\\upload_un.jpg"));
+		updBtn.setPressedIcon(new ImageIcon("C:\\images\\upload_click.jpg"));
 		updBtn.setBounds(191, 470, 188, 40);
 		updBtn.setBorderPainted(false);
 		panel.add(updBtn);
 
 		JButton signInBtn = new JButton("");
 		signInBtn.setBackground(new Color(34, 77, 96));
-		signInBtn.setIcon(new ImageIcon("C:\\Users\\BIT\\OneDrive\\바탕 화면\\프로젝트\\회원가입\\signin_fin_un.jpg"));
-		signInBtn.setPressedIcon(new ImageIcon("C:\\Users\\BIT\\OneDrive\\바탕 화면\\프로젝트\\회원가입\\signin_fin_click.jpg"));
+		signInBtn.setIcon(new ImageIcon("C:\\images\\signin_fin_un.jpg"));
+		signInBtn.setPressedIcon(new ImageIcon("C:\\images\\signin_fin_click.jpg"));
 		signInBtn.setBounds(179, 520, 200, 62);
 		signInBtn.setBorderPainted(false);
 
