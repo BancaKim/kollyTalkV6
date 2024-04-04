@@ -68,7 +68,7 @@ public class AdminLoginScreen2 extends JFrame {
 
 		JLabel mainLogo = new JLabel("");
 		mainLogo.setIcon(new ImageIcon("C:\\images\\kollytalk_logo.jpg"));
-		mainLogo.setBounds(0, 0, 484, 165);
+		mainLogo.setBounds(0, 40, 484, 165);
 		panel.add(mainLogo);
 
 		JLabel idLabel = new JLabel("관리자 아이디");
@@ -94,8 +94,8 @@ public class AdminLoginScreen2 extends JFrame {
 		passwordField.setColumns(10);
 
 		JButton loginBtn = new JButton("");
-		loginBtn.setIcon(new ImageIcon("C:\\\\images\\login_un.jpg"));
-		loginBtn.setPressedIcon(new ImageIcon("C:\\\\images\\login_click.jpg"));
+		loginBtn.setIcon(new ImageIcon("C:\\images\\login_un.jpg"));
+		loginBtn.setPressedIcon(new ImageIcon("C:\\images\\login_click.jpg"));
 		loginBtn.setBounds(90, 432, 265, 57);
 		loginBtn.setBorderPainted(false);
 		panel.add(loginBtn);

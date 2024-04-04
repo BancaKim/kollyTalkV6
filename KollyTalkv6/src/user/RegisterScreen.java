@@ -52,7 +52,7 @@ public class RegisterScreen extends JFrame {
 		panel.setLayout(null);
 
 		JLabel mainLogo = new JLabel(
-				new ImageIcon("C:/Users/BIT/git/KollyTalkv5/kollytalkv5/images/collytalk_logo.jpg"));
+				new ImageIcon("C:\\images\\kollytalk_logo.jpg"));
 		mainLogo.setBounds(12, 10, 476, 165);
 		panel.add(mainLogo);
 

@@ -38,8 +38,7 @@ public class UserMenuScreen extends JFrame {
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 
-		JLabel mainLogo = new JLabel(
-				new ImageIcon("C:\\Users\\BIT\\git\\kollyTalkV6\\KollyTalkv6\\images\\collytalk_logo.jpg"));
+		JLabel mainLogo = new JLabel(new ImageIcon("C:\\images\\kollytalk_logo.jpg"));
 		mainLogo.setBounds(0, 20, 472, 159);
 		panel.add(mainLogo);
 
@@ -65,7 +64,7 @@ public class UserMenuScreen extends JFrame {
 		panel_1.add(infoBtn);
 
 		JButton chatBtn = new JButton("");
-		chatBtn.setIcon(new ImageIcon("C:\\Users\\BIT\\OneDrive\\바탕 화면\\프로젝트\\회원가입\\chatenter_un.jpg"));
+		chatBtn.setIcon(new ImageIcon("C:\\images\\chatenter_un.jpg"));
 		chatBtn.setPressedIcon(new ImageIcon("C:\\images\\chatenter_cilck.jpg"));
 		chatBtn.setBackground(new Color(34, 77, 96));
 		chatBtn.setBorderPainted(false);

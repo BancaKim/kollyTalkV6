@@ -58,68 +58,74 @@ public class LoginScreen extends JFrame {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
 		frame = new JFrame();
 		frame.setTitle("KollyTalk");
-		ImagePanel welcomePanel = new ImagePanel(new ImageIcon("C:/Users/BIT/git/KollyTalkv5/kollytalkv5/images/background2.jpg").getImage());
-		frame.setSize(welcomePanel.getWidth(),welcomePanel.getHeight());
-		frame.getContentPane().add(welcomePanel, BorderLayout.WEST);
-		welcomePanel.setLayout(null);
+		frame.setBounds(100, 100, 500, 700);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(34, 77, 96));
+		panel.setBounds(0, 0, 484, 661);
+		frame.getContentPane().add(panel);
+		panel.setLayout(null);
 		
 		JLabel idLabel = new JLabel("아이디");
 		idLabel.setForeground(new Color(255, 255, 255));
 		idLabel.setFont(new Font("Cafe24 Ssurround Bold", Font.PLAIN, 22));
 		idLabel.setBounds(83, 338, 69, 36);
-		welcomePanel.add(idLabel);
+		panel.add(idLabel);
 		
 		JLabel  passwordLabel = new JLabel("비밀번호");
 		 passwordLabel.setForeground(new Color(255, 255, 255));
 		 passwordLabel.setFont(new Font("Cafe24 Ssurround Bold", Font.PLAIN, 22));
 		 passwordLabel.setBounds(75, 378, 90, 36);
-		welcomePanel.add( passwordLabel);
+		 panel.add( passwordLabel);
 		
 		idField = new JTextField();
 		idField.setBounds(177, 338, 200, 30);
-		welcomePanel.add(idField);
+		panel.add(idField);
 		idField.setColumns(10);
 		
 		passwordField = new JPasswordField();
 		passwordField.setBounds(177, 378, 200, 30);
-		welcomePanel.add(passwordField);
+		panel.add(passwordField);
 		passwordField.setColumns(10);
 		
-		JLabel mainLogo = new JLabel(new ImageIcon("C:/Users/BIT/git/KollyTalkv5/kollytalkv5/images/collytalk_logo.jpg"));
-		mainLogo.setBounds(12, 40, 476, 166);
-		welcomePanel.add(mainLogo);
+		JLabel mainLogo = new JLabel(new ImageIcon("C:\\images\\kollytalk_logo.jpg"));
+		mainLogo.setBounds(0, 40, 476, 166);
+		panel.add(mainLogo);
 		
-		JButton signinBtn = new JButton(new ImageIcon("C:/Users/BIT/git/KollyTalkv5/kollytalkv5/images/signin64.png"));
+		JButton signinBtn = new JButton(new ImageIcon("C:\\images\\signin64.png"));
 		signinBtn.setBackground(new Color(34, 77, 96));
 		signinBtn.setBounds(117, 522, 111, 97);
 		signinBtn.setBorderPainted(false);
-		welcomePanel.add(signinBtn);
-		frame.setLocationRelativeTo(welcomePanel);
+		panel.add(signinBtn);
+		frame.setLocationRelativeTo(panel);
 		
-		JButton adminBtn = new JButton(new ImageIcon("C:/Users/BIT/git/KollyTalkv5/kollytalkv5/images/admin64.png"));
+		JButton adminBtn = new JButton(new ImageIcon("C:\\images\\admin64.png"));
 		adminBtn.setBackground(new Color(34, 77, 96));
 		adminBtn.setBounds(261, 525, 98, 94);
 		adminBtn.setBorderPainted(false);
-		welcomePanel.add(adminBtn);
+		panel.add(adminBtn);
 		
 		JButton loginBtn = new JButton("");
-		loginBtn.setIcon(new ImageIcon("C:\\Users\\BIT\\OneDrive\\바탕 화면\\프로젝트\\회원가입\\login_un.jpg"));
-		loginBtn.setPressedIcon(new ImageIcon("C:\\Users\\BIT\\OneDrive\\바탕 화면\\프로젝트\\회원가입\\login_click.jpg"));
+		loginBtn.setIcon(new ImageIcon("C:\\images\\login_un.jpg"));
+		loginBtn.setPressedIcon(new ImageIcon("C:\\images\\login_click.jpg"));
 		loginBtn.setBounds(105, 424, 265, 57);
 		loginBtn.setBorderPainted(false);
-		welcomePanel.add(loginBtn);
+		panel.add(loginBtn);
 		
 		JLabel siginInLabel = new JLabel("회원가입");
 		siginInLabel.setFont(new Font("Cafe24 Ssurround Bold", Font.PLAIN, 20));
 		siginInLabel.setBounds(135, 619, 90, 36);
-		welcomePanel.add(siginInLabel);
+		panel.add(siginInLabel);
 		
 		JLabel adminLabel = new JLabel("관리자로그인");
 		adminLabel.setFont(new Font("Cafe24 Ssurround Bold", Font.PLAIN, 20));
 		adminLabel.setBounds(250, 619, 129, 36);
-		welcomePanel.add(adminLabel);
+		panel.add(adminLabel);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		// 로그인 버튼 리스너
